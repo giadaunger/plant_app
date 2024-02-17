@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Outlet } from 'react-router-dom';
 
 import Navbar from '../components/Navbar';
@@ -13,7 +13,7 @@ function Layoute() {
             </div>
             <Footer />
         </div>
-    )
+    );
 }
 
-export default Layoute
+export default Layoute;
