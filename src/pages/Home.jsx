@@ -3,12 +3,11 @@ import WeatherDisplay from '../components/WeatherDisplay';
 
 function Home() {
   const [weather, setWeather] = useState(null);
-  const [location, setLocation] = useState("Bucharest");
-
-  const APIkey = "dbed5a5d5db05158794ce15c5b2f49bc";
+  const [location, setLocation] = useState("Stockholm");
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APIkey}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`;
 
     const fetchData = async () => {
       try {
@@ -24,12 +23,12 @@ function Home() {
     };
 
     fetchData();
-  }, [location]);
+  }, [location, apiKey]);
 
   return (
     <div>
       <h1>Weather App</h1>
-      <WeatherDisplay />
+      <WeatherDisplay weather={weather}/>
     </div>
   );
 }
