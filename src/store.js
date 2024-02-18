@@ -4,6 +4,7 @@ const useStore = create((set) => ({
     weather: null,
     location: "Paris",
     searchQuery: "",
+    errMsg: "",
     fetchWeather: async (location) => {
         try {
             const APIkey = import.meta.env.VITE_API_KEY;
@@ -19,7 +20,8 @@ const useStore = create((set) => ({
         }
     },
     setLocation: (newLocation) => set({ location: newLocation }),
-    setSearchQuery: (query) => set({ searchQuery: query })
+    setSearchQuery: (query) => set({ searchQuery: query }),
+    setErrMsg: (errMsg) => set({ errMsg }), // Define setErrMsg action to update errMsg state
 }));
 
 export default useStore;

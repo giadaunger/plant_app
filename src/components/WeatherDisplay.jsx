@@ -3,18 +3,16 @@ import useStore from '../store'
 import SearchBar from './SearchBar';
 
 function WeatherDisplay() {
-    const { weather, location, fetchWeather, setLocation, setSearchQuery, searchQuery } = useStore();
+    const { weather, location, fetchWeather, setLocation, setSearchQuery, searchQuery, errMsg, setErrMsg } = useStore();
 
     useEffect(() => {
         fetchWeather(location);
     }, [fetchWeather, location]);
 
-    console.log(`weather: ${weather}`)
-
     return (
         <div>
             <div className="bg-blue-500 w-2/3">
-                <SearchBar weather={weather} location={location} setLocation={setLocation} setSearchQuery={setSearchQuery} searchQuery={searchQuery}/>
+                <SearchBar weather={weather} location={location} setLocation={setLocation} setSearchQuery={setSearchQuery} searchQuery={searchQuery} errMsg={errMsg} setErrMsg={setErrMsg}/>
                 {weather && (
                     <div>
                         <h2>Location: {weather.name}</h2>
