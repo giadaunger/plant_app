@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import useStore from '../store'
 
-function WeatherDisplay({ weather, setWeather }) {
+function WeatherDisplay() {
+    const { weather, location, fetchWeather } = useStore();
+
+    useEffect(() => {
+        fetchWeather(location);
+    }, [fetchWeather, location]);
+
     return (
         <div>
             <div className="bg-blue-500 w-2/3">
